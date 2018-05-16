@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+
+import { addEvent, removeEvent } from './actions/events';
 import logo from './logo.svg';
 import './App.css';
-
-import { addEvent } from './actions/events';
 
 class App extends Component {
   render() {
@@ -21,4 +21,4 @@ class App extends Component {
   }
 }
 
-export default connect(null, null)(App);
+export default connect()(App);
