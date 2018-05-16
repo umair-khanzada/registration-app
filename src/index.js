@@ -6,11 +6,12 @@ import { Provider } from 'react-redux';
 //custom components.
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import rootReducer from './reducers/index';
 
 //css files.
 import './index.css';
 
-const store = createStore(() => {});
+const store = createStore(rootReducer);
 ReactDOM.render(
   <Provider store={store}>
     <App />

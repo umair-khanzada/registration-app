@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import logo from './logo.svg';
 import './App.css';
+
+import { addEvent } from './actions/events';
 
 class App extends Component {
   render() {
@@ -11,11 +14,11 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+        <button type="button" onClick={() => this.props.dispatch(addEvent({text:"aded"}))}>click me</button>
         </p>
       </div>
     );
   }
 }
 
-export default App;
+export default connect(null, null)(App);
