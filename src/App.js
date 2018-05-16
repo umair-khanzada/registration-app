@@ -1,24 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import { addEvent, removeEvent } from './actions/events';
+import { addEvent, getEvent } from './actions/events';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+  }
   render() {
+    console.log("in app.js",this.props)
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-        <button type="button" onClick={() => this.props.dispatch(addEvent({text:"aded"}))}>click me</button>
-        </p>
-      </div>
+       <Router>
+        <div className="App">
+          <nav className="navbar navbar-inverse navbar-fixed-top">
+            <div className="container-fluid">
+              <div className="navbar-header">
+                <a className="navbar-brand" href="#">WebSiteName</a>
+              </div>
+              <ul className="nav navbar-nav">
+                <li className="active"><a href="#">Home</a></li>
+                <li><a href="#">Page 1</a></li>
+              </ul>
+            </div>
+          </nav>
+          <div className="container bodyContainer">
+              <button type="button" onClick={() => this.props.dispatch(getEvent())}>click me</button>
+          </div>
+        </div>
+       </Router>
     );
   }
 }
 
-export default connect()(App);
+export default connect((state) => {
+  return state;
+})(App);
