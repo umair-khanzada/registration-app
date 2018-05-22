@@ -25,9 +25,9 @@ export const updateEvent = (payload) => {
 };
 
 const replaceEvent = (events) => ({
-                type: GET_EVENT,
-                events
-            })
+    type: GET_EVENT,
+    events
+})
 
 export const getEvent = () => {
     return (dispatch) => {

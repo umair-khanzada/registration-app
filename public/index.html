@@ -38,7 +38,7 @@
       function onSignIn(googleUser) {
         let profile = googleUser.getBasicProfile(),
         user = {name: profile.getName(), email: profile.getEmail(), image: profile.getImageUrl()};
-        localStorage.setItem('user', user);
+        localStorage.setItem('user', JSON.stringify(user));
         location.href = 'http://localhost:3000';
       }
     </script>
