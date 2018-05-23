@@ -12,3 +12,35 @@ body {
   align-items: center;
   height: 100vh;
 }
+
+/*Card Style*/
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  position: relative;
+  margin: 15px 0;
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card-header{
+  position: absolute;
+  width: 100%;
+}
+.card-header small{
+  color: #fff;
+  background: #72d6ba;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+.card-info{
+  padding: 5px 10px;
+}
+.card i{
+  margin-right: 5px;
+}
+
+/*Global classes.*/
+.m-r-5{
+  margin-right: 5px;
+}
