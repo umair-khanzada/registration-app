@@ -9,7 +9,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 //custom components.
 import App from './App';
-import {Login} from './components/Login';
+import Login from './components/Login';
 
 //styles.
 import './index.css';
@@ -19,14 +19,12 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
-    <div className="container">
-      <Router>
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/" render={() => localStorage.getItem('user') ? <App /> : <Redirect to="/login" />} />
-        </Switch>
-      </Router>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/" render={() => localStorage.getItem('user') ? <App /> : <Redirect to="/login" />} />
+      </Switch>
+    </Router>
   </Provider>,
   document.getElementById('root'));
 registerServiceWorker();

@@ -4,6 +4,7 @@ import {Route, Link} from 'react-router-dom';
 
 //custom component.
 import Card from './components/Card'
+import Navbar from './components/Navbar'
 
 //actions.
 import { getEvent } from './actions/events';
@@ -19,12 +20,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Navbar />
         <div className="container bodyContainer">
-          <button type="button" onClick={() => this.props.dispatch(getEvent())}>click me</button>
+          <div className="row">
+            {/*<button type="button" onClick={() => this.props.dispatch(getEvent())}>click me</button>*/}
+            {
+              [1,2,3,4,5,6,7,8,9,9,9,9]
+                .map(() => <Card className="col-sm-4 col-md-3"/>)
+            }
+          </div>
         </div>
-        {
-          [1,2,3,4,5,6,7,8,9,9,9,9].map(() => <Card className="col-sm-4 col-md-3"/>)
-        }
       </div>
     );
   }

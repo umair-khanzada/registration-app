@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Login = () => {
+const Login = () => {
   return (
     <div className="login-container">
       {/*TODO: Temporary sign in*/}
@@ -9,3 +9,5 @@ export const Login = () => {
     </div>
   )
 };
+
+export default Login;
