@@ -7,7 +7,7 @@ import Card from './components/Card'
 import Navbar from './components/Navbar'
 
 //actions.
-import { getEvent } from './actions/events';
+import { getEvents, createEvent } from './actions/events';
 
 //styles.
 import './App.css';
@@ -15,6 +15,10 @@ import './App.css';
 class App extends Component {
   constructor(props){
     super(props);
+  }
+
+  componentDidMount() {
+    this.props.dispatch(getEvents())
   }
 
   render() {
