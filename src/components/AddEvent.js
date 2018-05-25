@@ -2,9 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { LocalForm, Control } from 'react-redux-form';
 
-class App extends Component {
+
+//actions.
+import { createEvent } from './actions/events';
+
+class AddEvent extends Component {
   constructor(props){
     super(props);
+  }
+
+  createEvent() {
+    // this.props.dispatch(createEvent(data))
   }
 
   render() {
@@ -24,4 +32,4 @@ class App extends Component {
 
 export default connect((state) => {
   return state;
-})(App);
+})(AddEvent);

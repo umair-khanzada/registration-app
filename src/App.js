@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Route} from 'react-router-dom';
+import { connect } from 'react-redux';
+import {Route, withRouter} from 'react-router-dom';
 
 //custom component.
 import Card from './components/Card'
@@ -36,4 +37,7 @@ class App extends Component {
   }
 }
 
-export default App;
+
+export default withRouter(connect((state) => {
+  return state;
+})(App));

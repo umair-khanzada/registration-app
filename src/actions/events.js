@@ -37,19 +37,7 @@ export const getEvents = () => {
 
 export const createEvent = (data) => {
     return (dispatch) => {
-        axios.post(`${BASE_URL}events?apiKey=${DB_KEY}`, 
-    {
-        name:"React event",
-description:"Just for fun.",
-attendees:[1, 2],
-startDate:"5/16/2018, 4:53:28 PM",
-endDate:"5/18/2018, 4:53:28 PM",
-venue:"Karachi",
-organizers:[1],
-trainers:[1, 2],
-tags:["React", "JSX", "ES6"],
-invites:["ukhanzada@nisum.com"]
-    })
+        axios.post(`${BASE_URL}events?apiKey=${DB_KEY}`, data)
         .then((response) => {
             console.log("addEvent response", response);
             dispatch(addEvent(response.data));
