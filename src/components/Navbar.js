@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 //custom component.
 import Avatar from './Avatar';
 
@@ -21,13 +21,16 @@ const Navbar = () => {
           <div id="navbarCollapse" className="collapse navbar-collapse">
             <ul className="nav navbar-nav">
               <li className="active">
-                <a href="#">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <a href="#">Profile</a>
+                <Link to="/">Profile</Link>
               </li>
               <li>
-                <a href="#">Messages</a>
+                <Link to="/">Messages</Link>
+              </li>
+              <li>
+                <Link to="/add-event">Add Event</Link>
               </li>
             </ul>
             <ul className="nav navbar-nav navbar-right">

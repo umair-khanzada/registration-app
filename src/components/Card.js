@@ -2,7 +2,7 @@ import React from 'react';
 
 const Card = (props) => {
   return (
-    <div className={props.className}>
+    <div className={props.className || 'col-sm-4 col-md-3'}>
       <div className="card">
         <div className="card-header">
           <small className="pull-left">
