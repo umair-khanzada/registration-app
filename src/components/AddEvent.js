@@ -4,7 +4,7 @@ import { LocalForm, Control } from 'react-redux-form';
 
 
 //actions.
-import { createEvent } from './actions/events';
+import { createEvent } from '../actions/events';
 
 class AddEvent extends Component {
   constructor(props){
