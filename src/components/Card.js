@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Card = (props) => {
   return (
-    <div className={props.className || 'col-sm-4 col-md-3'}>
+    <div className={props.className}>
       <div className="card">
         <div className="card-header">
           <small className="pull-left">
@@ -28,6 +29,15 @@ const Card = (props) => {
       </div>
     </div>
   )
+};
+
+Card.propTypes = {
+  className: PropTypes.string,
+};
+
+
+Card.defaultProps = {
+  className: 'col-sm-4 col-md-3'
 };
 
 export default Card;
