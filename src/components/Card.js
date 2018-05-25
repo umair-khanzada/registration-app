@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Card = (props) => {
+  console.log("props: ", props);
   return (
     <div className={props.className}>
       <div className="card">
@@ -24,7 +25,7 @@ const Card = (props) => {
             <i className="fas fa-user" />
             <b>John Doe</b>
           </h6>
-          <h4>Architect & Engineer</h4>
+          <h4>{props.event.name}</h4>
         </div>
       </div>
     </div>

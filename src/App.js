@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import {Route, withRouter} from 'react-router-dom';
 
 //custom component.
-import Card from './components/Card'
+import Events from './components/Events'
 import Navbar from './components/Navbar'
 import AddEvent from './components/AddEvent'
 
 //actions.
-import { getEvents, createEvent } from './actions/events';
+import { getEvents } from './actions/events';
+import { getUsers } from './actions/users';
 
 //styles.
 import './App.css';
@@ -20,6 +21,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.dispatch(getEvents())
+    this.props.dispatch(getUsers())
   }
 
   render() {
@@ -28,7 +30,7 @@ class App extends Component {
         <Navbar />
         <div className="container bodyContainer">
           <div className="row">
-            <Route exact path="/" component={Card}/>
+            <Route exact path="/" component={Events}/>
             <Route path="/add-event" component={AddEvent}/>
           </div>
         </div>
