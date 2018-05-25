@@ -2,7 +2,8 @@ import { ADD_EVENT, UPDATE_EVENT } from '../constants/events';
 
 const initialState = {
     events: [],
-    loading: true
+    loading: true,
+    loaded: false
 }
 
 const events = (state = initialState, action) => {
@@ -15,7 +16,8 @@ const events = (state = initialState, action) => {
         case UPDATE_EVENT:
             return {
                 ...state,
-                events: [...state.events, ...action.events]
+                events: [...state.events, ...action.events],
+                loaded: true
             };
         default:
             return state

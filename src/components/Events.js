@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 //custom component.
 import Card from './Card'
+import NotFound from './NotFound'
 
 class AddEvent extends Component {
   constructor(props){
@@ -10,12 +11,15 @@ class AddEvent extends Component {
   }
 
   render() {
-      let events = this.props.events.events;
+      const { events, loaded } = this.props.events;
 
     return (
         <div>
         {
             events.map((event, i) => <Card event={event} key={i} />)
+        }
+        {
+            loaded && !events.length ? <NotFound /> : null
         }
         </div>
     );
