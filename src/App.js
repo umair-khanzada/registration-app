@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import {Route, Link} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 
 //custom component.
 import Card from './components/Card'
 import Navbar from './components/Navbar'
+import AddEvent from './components/AddEvent'
 
 //actions.
 import { getEvent } from './actions/events';
@@ -23,11 +23,8 @@ class App extends Component {
         <Navbar />
         <div className="container bodyContainer">
           <div className="row">
-            {/*<button type="button" onClick={() => this.props.dispatch(getEvent())}>click me</button>*/}
-            {
-              [1,2,3,4,5,6,7,8,9,9,9,9]
-                .map(() => <Card className="col-sm-4 col-md-3"/>)
-            }
+            <Route exact path="/" component={Card}/>
+            <Route path="/add-event" component={AddEvent}/>
           </div>
         </div>
       </div>
@@ -35,6 +32,4 @@ class App extends Component {
   }
 }
 
-export default connect((state) => {
-  return state;
-})(App);
+export default App;
