@@ -28,7 +28,6 @@ export const getEvents = () => {
     return (dispatch) => {
         axios.get(`${BASE_URL}events?apiKey=${DB_KEY}`)
         .then((response) => {
-            console.log("response", response);
             dispatch(updateEvents(response.data));
         })
         .catch((error) => console.log("error", error));
@@ -39,7 +38,6 @@ export const createEvent = (data) => {
     return (dispatch) => {
         axios.post(`${BASE_URL}events?apiKey=${DB_KEY}`, data)
         .then((response) => {
-            console.log("addEvent response", response);
             dispatch(addEvent(response.data));
         })
         .catch((error) => console.log("error", error));
