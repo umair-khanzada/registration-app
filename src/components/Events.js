@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 //custom component.
-import Card from './Card'
-import NotFound from './NotFound'
+import Card from './Card';
+import Spinner from './Spinner';
+import NotFound from './NotFound';
 
 class AddEvent extends Component {
   constructor(props){
@@ -11,17 +12,14 @@ class AddEvent extends Component {
   }
 
   render() {
-      const { events, loaded } = this.props.events;
+    const { events, loading } = this.props.events;
 
     return (
-        <div>
-        {
-            events.map((event, i) => <Card event={event} key={i} />)
-        }
-        {
-            loaded && !events.length ? <NotFound /> : null
-        }
-        </div>
+      <div>
+        <Spinner visible={loading} size={30}/>
+        { events.map((event, i) => <Card event={event} key={i} />) }
+        { /*loaded && !events.length ? <NotFound /> : null */}
+      </div>
     );
   }
 }

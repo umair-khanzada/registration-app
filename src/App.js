@@ -20,8 +20,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(getEvents())
-    this.props.dispatch(getUsers())
+    this.props.dispatch(getEvents());
+    this.props.dispatch(getUsers());
   }
 
   render() {

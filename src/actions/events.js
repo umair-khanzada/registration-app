@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { BASE_URL } from '../config';
 import { DB_KEY } from '../credentials';
-import { ADD_EVENT, UPDATE_EVENT, REMOVE_EVENT, GET_EVENT } from '../constants/events';
+import { ADD_EVENT, UPDATE_EVENT, REMOVE_EVENT, FETCH_EVENT, EVENT_LOADING } from '../constants/events';
 import history from '../history';
 
 export const addEvent = (event) => {
@@ -25,11 +25,26 @@ export const updateEvents = (events) => {
     }
 };
 
+const fetchEvents = (events) => {
+    return {
+        type: FETCH_EVENT,
+        events
+    }
+};
+
+const eventLoading = (bool) => {
+    return {
+        type: EVENT_LOADING,
+        loading: bool
+    }
+};
+
 export const getEvents = () => {
     return (dispatch) => {
+        dispatch(eventLoading(true));
         axios.get(`${BASE_URL}events?apiKey=${DB_KEY}`)
             .then((response) => {
-                dispatch(updateEvents(response.data));
+                dispatch(fetchEvents(response.data));
             })
             .catch((error) => console.log("error", error));
     }

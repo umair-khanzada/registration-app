@@ -1,10 +1,9 @@
-import { ADD_EVENT, UPDATE_EVENT } from '../constants/events';
+import { ADD_EVENT, FETCH_EVENT, EVENT_LOADING } from '../constants/events';
 
 const initialState = {
     events: [],
-    loading: true,
-    loaded: false
-}
+    loading: true
+};
 
 const events = (state = initialState, action) => {
     switch (action.type) {
@@ -13,11 +12,16 @@ const events = (state = initialState, action) => {
                 ...state,
                 events: [...state.events, action.event]
             };
-        case UPDATE_EVENT:
+        case FETCH_EVENT:
             return {
                 ...state,
-                events: [...state.events, ...action.events],
-                loaded: true
+                loading: false,
+                events: [...state.events, ...action.events]
+            };
+        case EVENT_LOADING:
+            return {
+                ...state,
+                loading: action.loading
             };
         default:
             return state
