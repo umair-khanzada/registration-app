@@ -9,16 +9,25 @@ import { createEvent } from '../actions/events';
 class AddEvent extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      formSubmit: false
+    };
+
+    this.initialEvent = {
+      startDate: new Date(),
+      endDate: new Date()
+    }
   }
 
-  createEvent() {
-    // this.props.dispatch(createEvent(data))
+  createEvent(data) {
+    this.setState({ formSubmit: true })
+    this.props.dispatch(createEvent(data))
   }
 
   render() {
     return (
       <div className="col-sm-offset-3 col-sm-6">
-        <LocalForm onSubmit={(values) => console.log("values", values)}>
+        <LocalForm initialState={this.initialEvent} onSubmit={(values) => this.createEvent(values)}>
           <div className="form-group">
             <label>Name</label>
             <Control.text model=".name" className="form-control" placeholder="Name of the event" />
@@ -58,7 +67,7 @@ class AddEvent extends Component {
             <Control.text model=".invites" className="form-control" placeholder="invite friends"/>
           </div>
           <div>
-            <button type="submit" className="btn btn-default pull-right">Submit</button>
+            <button type="submit" className="btn btn-default pull-right" disabled={this.state.formSubmit}>Submit</button>
           </div>
         </LocalForm>
       </div>
