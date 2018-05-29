@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Route, withRouter} from 'react-router-dom';
+import axios from 'axios';
+import { BASE_URL } from './config';
+import { DB_KEY } from './credentials';
 
 //custom component.
 import Events from './components/Events'
@@ -20,8 +23,17 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(getEvents());
-    this.props.dispatch(getUsers());
+    this.updateOrInsertUser();
+  }
+
+  updateOrInsertUser(){
+    const user = JSON.parse(localStorage.getItem('user'));
+    axios.put(`${BASE_URL}users?q={"email":"${user.email}"}&u=true&apiKey=${DB_KEY}`, user)
+      .then((response) => {
+        this.props.dispatch(getEvents());
+        this.props.dispatch(getUsers());
+      })
+      .catch((error) => console.log("error in user", error));
   }
 
   render() {
@@ -40,6 +52,4 @@ class App extends Component {
 }
 
 
-export default withRouter(connect((state) => {
-  return state;
-})(App));
+export default withRouter(connect(() => ({}))(App));
