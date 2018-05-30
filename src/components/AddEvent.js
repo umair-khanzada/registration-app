@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { LocalForm, Control } from 'react-redux-form';
-
+import TagsInput from 'react-tagsinput'
 
 //actions.
 import { createEvent } from '../actions/events';
+
+const Tags = (props) => <TagsInput {...props}/>;
 
 class AddEvent extends Component {
   constructor(props){
@@ -15,13 +17,15 @@ class AddEvent extends Component {
 
     this.initialEvent = {
       startDate: new Date(),
-      endDate: new Date()
+      endDate: new Date(),
+      tags: []
     }
   }
 
   createEvent(data) {
+    console.log("data", data);
     this.setState({ formSubmit: true })
-    this.props.dispatch(createEvent(data))
+    // this.props.dispatch(createEvent(data))
   }
 
   render() {
@@ -38,7 +42,7 @@ class AddEvent extends Component {
           </div>
           <div className="form-group">
             <label>Tags</label>
-            <Control.text model=".tags" className="form-control" placeholder="Tags" />
+            <Control model=".tags" className="form-control" placeholder="Tags" component={Tags} />
           </div>
           <div className="form-group">
             <label>Venue</label>

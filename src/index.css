@@ -99,7 +99,36 @@ body {
   margin-right: 5px;
 }
 
+/*Tags*/
+.react-tagsinput-input{
+  border: none;
+}
+.react-tagsinput-input:focus{
+  outline: none;
+}
+
+.react-tagsinput-tag{
+  padding: 0 10px;
+  background: #72d6ba;
+  color: #fff;
+  border-radius: 12px;
+  text-transform: capitalize;
+  margin: 0 5px 5px 0;
+  display: inline-block;
+  /*border: 2px solid #50b79a;*/
+}
+
+.react-tagsinput-remove:before{
+  content: " ×";
+  font-family: sans-serif;
+  color: #fff;
+  font-weight: bold;
+}
+
 /*Global classes.*/
 .m-r-5{
   margin-right: 5px;
+}
+.form-group .form-control{
+  height: auto;
 }
