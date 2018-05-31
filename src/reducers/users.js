@@ -1,4 +1,4 @@
-import { UPDATE_USERS } from '../constants/users';
+import { FETCH_USERS } from '../constants/users';
 
 const initialState = {
     users: [],
@@ -7,10 +7,10 @@ const initialState = {
 
 const users = (state = initialState, action) => {
     switch (action.type) {
-        case UPDATE_USERS:
+        case FETCH_USERS:
             return {
                 ...state,
-                events: [...state.users, ...action.users]
+                users: [...action.users]
             };
         default:
             return state

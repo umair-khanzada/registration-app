@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { LocalForm, Control } from 'react-redux-form';
-import TagsInput from 'react-tagsinput'
+
+import Tags from './Tags';
 
 //actions.
 import { createEvent } from '../actions/events';
-
-const Tags = (props) => <TagsInput {...props}/>;
 
 class AddEvent extends Component {
   constructor(props){
@@ -18,7 +17,8 @@ class AddEvent extends Component {
     this.initialEvent = {
       startDate: new Date(),
       endDate: new Date(),
-      tags: []
+      tags: [],
+      organizers: []
     }
   }
 
@@ -29,6 +29,7 @@ class AddEvent extends Component {
   }
 
   render() {
+    const {users} = this.props;
     return (
       <div className="col-sm-offset-3 col-sm-6">
         <LocalForm initialState={this.initialEvent} onSubmit={(values) => this.createEvent(values)}>
@@ -42,7 +43,8 @@ class AddEvent extends Component {
           </div>
           <div className="form-group">
             <label>Tags</label>
-            <Control model=".tags" className="form-control" placeholder="Tags" component={Tags} />
+            {/*mapProps for passing additional props on component*/}
+            <Control model=".tags" className="form-control" placeholder="Tags" mapProps={{label: 'name', data: [{name: 'umair', _id: '1'}]}} component={Tags} />
           </div>
           <div className="form-group">
             <label>Venue</label>
@@ -59,12 +61,12 @@ class AddEvent extends Component {
           <div className="form-group">
             <label>Organizers</label>
             {/*TODO: change text input into auto-complete*/}
-            <Control.text model=".organizers" className="form-control" placeholder="Organizers" />
+            <Control model=".organizers" className="form-control" placeholder="Organizers" mapProps={{label: 'email', data: users}} component={Tags} />
           </div>
           <div className="form-group">
             <label>Trainers</label>
             {/*TODO: change text input into auto-complete*/}
-            <Control.text model=".trainers" className="form-control"  placeholder="Trainers" />
+            <Control.text model=".trainers" className="form-control" placeholder="Trainers" />
           </div>
           <div className="form-group">
             <label>Invites</label>
@@ -80,5 +82,6 @@ class AddEvent extends Component {
 }
 
 export default connect((state) => {
-  return state;
+  const {users} = state.users;
+  return {users};
 })(AddEvent);

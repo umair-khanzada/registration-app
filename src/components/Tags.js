@@ -3,7 +3,7 @@ import TagsInput from 'react-tagsinput';
 import AutoSuggest from 'react-autosuggest';
 
 const autoCompleteRenderInput = ({addTag, ...props}) => {
-
+  console.log("props in auto", props)
   const handleOnChange = (e, {newValue, method}) => {
     if (method === 'enter') {
       e.preventDefault()
@@ -12,25 +12,26 @@ const autoCompleteRenderInput = ({addTag, ...props}) => {
     }
   };
 
-  const {value, data, filterby} = props,
+  const {value, data, label} = props,
     inputValue = (value && value.trim().toLowerCase()) || '';
   console.log("data in auto", data)
-  console.log("key in auto", filterby)
+  console.log("key in auto", label)
 
   let suggestions = data.filter((obj) => {
-    return obj[filterby].toLowerCase().includes(inputValue);
+    return obj[label].toLowerCase().includes(inputValue);
   });
+
 
   return (
     <AutoSuggest
-      ref={props.ref}
       suggestions={suggestions}
       shouldRenderSuggestions={(value) => value && value.trim().length > 0}
       getSuggestionValue={(suggestion) => suggestion.id}
-      renderSuggestion={(suggestion) => <span>{suggestion[filterby]}</span>}
+      renderSuggestion={(suggestion) => <span>{suggestion[label]}</span>}
       inputProps={{...props, onChange: handleOnChange}}
       onSuggestionSelected={(e, {suggestion}) => {
-        addTag(suggestion[filterby])
+        console.log("suggestion on selected", suggestion)
+        addTag(suggestion[label])
       }}
       onSuggestionsClearRequested={() => {}}
       onSuggestionsFetchRequested={() => {}}
@@ -39,11 +40,10 @@ const autoCompleteRenderInput = ({addTag, ...props}) => {
 };
 
 const Tags = (props) => {
-  const {data, filterby} = props;
-  console.log("key in tags", filterby)
+  const {data, label} = props;
   return (
     <TagsInput renderInput={autoCompleteRenderInput}
-      inputProps={{data, filterby}} {...props} onlyUnique />
+      inputProps={{data, label}} {...props} onlyUnique />
   )
 };
 

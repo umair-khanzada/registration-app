@@ -112,7 +112,7 @@ body {
   background: #72d6ba;
   color: #fff;
   border-radius: 12px;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   margin: 0 5px 5px 0;
   display: inline-block;
   /*border: 2px solid #50b79a;*/
