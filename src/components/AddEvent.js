@@ -7,6 +7,14 @@ import Tags from './Tags';
 //actions.
 import { createEvent } from '../actions/events';
 
+const OptionList = ({data, label, value, nested}) => {
+  return data.map((obj, i) => (
+    <option key={i} value={nested ? obj[value].$oid : obj[value]}>
+      {obj[label]}
+    </option>
+  ))
+}
+
 class AddEvent extends Component {
   constructor(props){
     super(props);
@@ -18,14 +26,16 @@ class AddEvent extends Component {
       startDate: new Date(),
       endDate: new Date(),
       tags: [],
-      organizers: []
+      organizers: [],
+      trainers: [],
+      invites: []
     }
   }
 
   createEvent(data) {
     console.log("data", data);
     this.setState({ formSubmit: true })
-    // this.props.dispatch(createEvent(data))
+    this.props.dispatch(createEvent(data))
   }
 
   render() {
@@ -44,7 +54,7 @@ class AddEvent extends Component {
           <div className="form-group">
             <label>Tags</label>
             {/*mapProps for passing additional props on component*/}
-            <Control model=".tags" className="form-control" placeholder="Tags" mapProps={{label: 'name', data: [{name: 'umair', _id: '1'}]}} component={Tags} />
+            <Control model=".tags" className="form-control" placeholder="Tags" mapProps={{type: 'string', data: ['html', 'css', 'scss', 'bootstrap']}} component={Tags} />
           </div>
           <div className="form-group">
             <label>Venue</label>
@@ -60,20 +70,27 @@ class AddEvent extends Component {
           </div>
           <div className="form-group">
             <label>Organizers</label>
-            {/*TODO: change text input into auto-complete*/}
-            <Control model=".organizers" className="form-control" placeholder="Organizers" mapProps={{label: 'email', data: users}} component={Tags} />
+            {/*TODO: use Tags for better user experience*/}
+            <Control.select model=".organizers" className="form-control" multiple>
+              <OptionList data={users} value="_id" label="name" nested/>
+            </Control.select>
           </div>
           <div className="form-group">
             <label>Trainers</label>
-            {/*TODO: change text input into auto-complete*/}
-            <Control.text model=".trainers" className="form-control" placeholder="Trainers" />
+            {/*TODO: use Tags for better user experience*/} 
+            <Control.select model=".trainers" className="form-control" multiple>
+              <OptionList data={users} value="_id" label="name" nested/>
+            </Control.select>
           </div>
           <div className="form-group">
             <label>Invites</label>
-            <Control.text model=".invites" className="form-control" placeholder="invite friends"/>
-          </div>
+            {/*TODO: use Tags for better user experience*/} 
+            <Control.select model=".invites" className="form-control" multiple>
+              <OptionList data={users} value="email" label="email"/>
+            </Control.select>
+          </div>        
           <div>
-            <button type="submit" className="btn btn-default pull-right" disabled={this.state.formSubmit}>Submit</button>
+            <button type="submit" className="btn btn-default pull-right" >Submit</button>
           </div>
         </LocalForm>
       </div>
