@@ -125,6 +125,15 @@ body {
   font-weight: bold;
 }
 
+/* Form errors */
+.form-group > div:not([class]){
+  color: red;
+  font-size: 12px;
+}
+.form-group > div:not([class]) span{
+  display: block;
+}
+
 /*Global classes.*/
 .m-r-5{
   margin-right: 5px;

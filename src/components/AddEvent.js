@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { LocalForm, Control } from 'react-redux-form';
-
+import { LocalForm, Control, Errors } from 'react-redux-form';
 import Tags from './Tags';
 
+// constants.
+import { REQUIRED, MIN_LENGTH, ARRAY_LENGTH, REQUIRED_MESSAGE, MIN_LENGTH_MESSAGE, TOUCH_AND_NOT_FOCUS } from '../constants/global';
 //actions.
 import { createEvent } from '../actions/events';
 
@@ -13,7 +14,7 @@ const OptionList = ({data, label, value, nested}) => {
       {obj[label]}
     </option>
   ))
-}
+};
 
 class AddEvent extends Component {
   constructor(props){
@@ -34,8 +35,8 @@ class AddEvent extends Component {
 
   createEvent(data) {
     console.log("data", data);
-    this.setState({ formSubmit: true })
-    this.props.dispatch(createEvent(data))
+    this.setState({ formSubmit: true });
+    this.props.dispatch(createEvent(data));
   }
 
   render() {
@@ -45,20 +46,41 @@ class AddEvent extends Component {
         <LocalForm initialState={this.initialEvent} onSubmit={(values) => this.createEvent(values)}>
           <div className="form-group">
             <label>Name</label>
-            <Control.text model=".name" className="form-control" placeholder="Name of the event" />
+            <Control.text model=".name" className="form-control" validators={{ REQUIRED }} placeholder="Name of the event" />
+            <Errors
+              model=".name"
+              show={TOUCH_AND_NOT_FOCUS}
+              messages={REQUIRED_MESSAGE}
+            />
           </div>
           <div className="form-group">
             <label>Description</label>
-            <Control.textarea model=".description" className="form-control" placeholder="Describe your event" />
+            <Control.textarea model=".description" className="form-control" validators={{ REQUIRED, MIN_LENGTH }} placeholder="Describe your event" />
+            <Errors
+              model=".description"
+              show={TOUCH_AND_NOT_FOCUS}
+              messages={{...REQUIRED_MESSAGE, ...MIN_LENGTH_MESSAGE}}
+            />
           </div>
           <div className="form-group">
             <label>Tags</label>
             {/*mapProps for passing additional props on component*/}
-            <Control model=".tags" className="form-control" placeholder="Tags" mapProps={{type: 'string', data: ['html', 'css', 'scss', 'bootstrap']}} component={Tags} />
+            <Control model=".tags" className="form-control" placeholder="Tags" validators={{ REQUIRED: ARRAY_LENGTH }}
+              mapProps={{type: 'string', data: ['html', 'css', 'scss', 'bootstrap']}} component={Tags} />
+            <Errors
+              model=".tags"
+              show={TOUCH_AND_NOT_FOCUS}
+              messages={REQUIRED_MESSAGE}
+            />
           </div>
           <div className="form-group">
             <label>Venue</label>
-            <Control.text model=".venue" className="form-control" placeholder="Place of the event" />
+            <Control.text model=".venue" className="form-control" validators={{ REQUIRED }} placeholder="Place of the event" />
+            <Errors
+              model=".venue"
+              show={TOUCH_AND_NOT_FOCUS}
+              messages={REQUIRED_MESSAGE}
+            />
           </div>
           <div className="form-group">
             <label>Start date</label>
@@ -71,23 +93,38 @@ class AddEvent extends Component {
           <div className="form-group">
             <label>Organizers</label>
             {/*TODO: use Tags for better user experience*/}
-            <Control.select model=".organizers" className="form-control" multiple>
+            <Control.select model=".organizers" className="form-control" validators={{ REQUIRED: ARRAY_LENGTH }} multiple>
               <OptionList data={users} value="_id" label="name" nested/>
             </Control.select>
+            <Errors
+              model=".organizers"
+              show={TOUCH_AND_NOT_FOCUS}
+              messages={REQUIRED_MESSAGE}
+            />
           </div>
           <div className="form-group">
             <label>Trainers</label>
             {/*TODO: use Tags for better user experience*/} 
-            <Control.select model=".trainers" className="form-control" multiple>
+            <Control.select model=".trainers" className="form-control" validators={{ REQUIRED: ARRAY_LENGTH }} multiple>
               <OptionList data={users} value="_id" label="name" nested/>
             </Control.select>
+            <Errors
+              model=".trainers"
+              show={TOUCH_AND_NOT_FOCUS}
+              messages={REQUIRED_MESSAGE}
+            />
           </div>
           <div className="form-group">
             <label>Invites</label>
             {/*TODO: use Tags for better user experience*/} 
-            <Control.select model=".invites" className="form-control" multiple>
+            <Control.select model=".invites" className="form-control" validators={{ REQUIRED: ARRAY_LENGTH }} multiple>
               <OptionList data={users} value="email" label="email"/>
             </Control.select>
+            <Errors
+              model=".invites"
+              show={TOUCH_AND_NOT_FOCUS}
+              messages={REQUIRED_MESSAGE}
+            />
           </div>        
           <div>
             <button type="submit" className="btn btn-default pull-right" >Submit</button>
