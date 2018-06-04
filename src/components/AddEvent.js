@@ -29,7 +29,8 @@ class AddEvent extends Component {
       tags: [],
       organizers: [],
       trainers: [],
-      invites: []
+      invites: [],
+      attendees: []
     }
   }
 

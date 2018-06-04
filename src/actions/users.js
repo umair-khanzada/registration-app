@@ -15,7 +15,10 @@ export const getUsers = () => {
     return (dispatch) => {
         axios.get(`${BASE_URL}users?apiKey=${DB_KEY}`)
         .then((response) => {
-            dispatch(fetchUsers(response.data));
+            const {data} = response,
+              user = data.find(obj => obj.email === JSON.parse(localStorage.getItem('user')).email);
+            localStorage.setItem('user', JSON.stringify(user));
+            dispatch(fetchUsers(data));
         })
         .catch((error) => console.log("error", error));
     }

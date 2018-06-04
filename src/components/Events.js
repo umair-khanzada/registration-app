@@ -12,6 +12,7 @@ class AddEvent extends Component {
   }
 
   render() {
+    console.log("this.props", this.props)
     const { events, loading } = this.props.events;
 
     return (

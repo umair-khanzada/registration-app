@@ -1,8 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const {email, _id: {$oid: userId}} = JSON.parse(localStorage.getItem('user'));
+
 const Card = (props) => {
-  console.log("props: ", props);
+  const {event} = props;
+  // console.log("event", $oid)
+
+  const isAttend = () => {
+    if(
+        event.attendees.includes(userId) || event.trainers.includes(userId) ||
+        event.organizers.includes(userId) || event.invites.includes(email)
+      ){
+        return 's';
+      } else {
+        return 'r';
+      }
+  }
+
   return (
     <div className={props.className}>
       <div className="card">
@@ -12,7 +27,7 @@ const Card = (props) => {
             24 Jul 2018
           </small>
           <small className="pull-right">
-            <i className="fas fa-heart" />
+            <i className={`fa${isAttend()} fa-heart`} />
             {/*<i className="far fa-heart" />*/}
             <span className="m-r-5"> | </span>
             <i className="fas fa-users" />
@@ -22,10 +37,10 @@ const Card = (props) => {
         <img src="http://cs.pes.edu/wp-content/uploads/2016/06/default-2.jpg" alt="Avatar" style={{width:'100%'}} />
         <div className="card-info">
           <h6>
-            <i className="fas fa-user" />
-            <b>John Doe</b>
+            <i className="fas fa-map-marker" />
+            <b>{event.venue}</b>
           </h6>
-          <h4>{props.event.name}</h4>
+          <h4>{event.name}</h4>
         </div>
       </div>
     </div>
