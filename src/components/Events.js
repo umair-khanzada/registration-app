@@ -13,12 +13,11 @@ class AddEvent extends Component {
 
   render() {
     const { events, loading } = this.props.events;
-
     return (
       <div>
         <Spinner visible={loading} size={30}/>
         { events.map((event, i) => <Card event={event} key={i} />) }
-        { /*loaded && !events.length ? <NotFound /> : null */}
+        <NotFound name="Events" visible={!events.length && !loading}/>
       </div>
     );
   }
