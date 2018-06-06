@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const NotFound = ({name, visible}) => {
   return visible && (
@@ -9,4 +10,15 @@ const NotFound = ({name, visible}) => {
     </div>
   )
 };
+
+NotFound.propTypes = {
+  name: PropTypes.string,
+  visible: PropTypes.bool.isRequired
+};
+
+
+NotFound.defaultProps = {
+  name: ''
+};
+
 export default NotFound;
