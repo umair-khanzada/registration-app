@@ -32,10 +32,10 @@ const fetchEvents = (events) => {
     }
 };
 
-const eventLoading = (bool) => {
+const eventLoading = (loading) => {
     return {
         type: EVENT_LOADING,
-        loading: bool
+        loading
     }
 };
 
