@@ -134,6 +134,17 @@ body {
   display: block;
 }
 
+/* Not found */
+.not-found{
+  font-weight: bold;
+  color: #aaa;
+}
+.not-found h2{
+  font-weight: bold;
+  font-size: 50px;
+  margin: 0;
+}
+
 /*Global classes.*/
 .m-r-5{
   margin-right: 5px;
