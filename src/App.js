@@ -18,10 +18,6 @@ import { getUsers } from './actions/users';
 import './App.css';
 
 class App extends Component {
-  constructor(props){
-    super(props);
-  }
-
   componentDidMount() {
     this.updateOrInsertUser();
   }

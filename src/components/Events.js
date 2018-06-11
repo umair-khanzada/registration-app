@@ -7,12 +7,8 @@ import Spinner from './Spinner';
 import NotFound from './NotFound';
 
 class AddEvent extends Component {
-  constructor(props){
-    super(props);
-  }
-
   render() {
-    const { events, loading } = this.props.events;
+    const { events, loading } = this.props;
     return (
       <div>
         <Spinner visible={loading} size={30}/>
@@ -24,5 +20,5 @@ class AddEvent extends Component {
 }
 
 export default connect((state) => {
-  return state;
+  return state.events;
 })(AddEvent);

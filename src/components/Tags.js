@@ -10,7 +10,7 @@ const autoCompleteRenderInput = ({addTag, ...props}) => {
   const {value, data, label, type} = props,
     inputValue = (value && value.trim().toLowerCase()) || '';
 
-  if(type == 'string'){
+  if(type === 'string'){
     suggestions = data.filter((str) => {
       return str.toLowerCase().includes(inputValue);
     });
