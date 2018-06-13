@@ -4,6 +4,7 @@ import moment from 'moment';
 
 const {email, _id: {$oid: userId}} = JSON.parse(localStorage.getItem('user'));
 
+//TODO: Enhancement, use same component for event details.
 const Card = (props) => {
   const {event} = props;
   console.log("event", event)
@@ -48,7 +49,8 @@ const Card = (props) => {
 };
 
 Card.propTypes = {
-  className: PropTypes.string,
+  event: PropTypes.object.isRequired,
+  className: PropTypes.string
 };
 
 Card.defaultProps = {

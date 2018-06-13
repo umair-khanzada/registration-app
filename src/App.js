@@ -6,9 +6,10 @@ import { BASE_URL } from './config';
 import { DB_KEY } from './credentials';
 
 //custom component.
-import Events from './components/Events'
-import Navbar from './components/Navbar'
-import AddEvent from './components/AddEvent'
+import Events from './components/Events';
+import Navbar from './components/Navbar';
+import AddEvent from './components/AddEvent';
+import EventDetails from './components/EventDetails';
 
 //actions.
 import { getEvents } from './actions/events';
@@ -39,6 +40,7 @@ class App extends Component {
         <div className="container bodyContainer">
           <div className="row">
             <Route exact path="/" component={Events}/>
+            <Route path="/event/:id" component={EventDetails}/>
             <Route path="/add-event" component={AddEvent}/>
           </div>
         </div>
