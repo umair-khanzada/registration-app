@@ -6,7 +6,7 @@ import Card from './Card';
 import Spinner from './Spinner';
 import NotFound from './NotFound';
 
-class AddEvent extends Component {
+class Events extends Component {
   render() {
     const { events, loading } = this.props;
     return (
@@ -21,4 +21,4 @@ class AddEvent extends Component {
 
 export default connect((state) => {
   return state.events;
-})(AddEvent);
+})(Events);

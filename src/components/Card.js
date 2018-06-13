@@ -29,7 +29,6 @@ const Card = (props) => {
           </small>
           <small className="pull-right">
             <i className={`fa${isAttend()} fa-heart`} />
-            {/*<i className="far fa-heart" />*/}
             <span className="m-r-5"> | </span>
             <i className="fas fa-users" />
             {event.attendees.length + event.invites.length}
@@ -51,7 +50,6 @@ const Card = (props) => {
 Card.propTypes = {
   className: PropTypes.string,
 };
-
 
 Card.defaultProps = {
   className: 'col-sm-4 col-md-3'

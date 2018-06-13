@@ -16,7 +16,6 @@ NotFound.propTypes = {
   visible: PropTypes.bool.isRequired
 };
 
-
 NotFound.defaultProps = {
   name: ''
 };

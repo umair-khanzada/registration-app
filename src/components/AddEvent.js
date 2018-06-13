@@ -4,7 +4,15 @@ import { LocalForm, Control, Errors } from 'react-redux-form';
 import Tags from './Tags';
 
 // constants.
-import { REQUIRED, MIN_LENGTH, ARRAY_LENGTH, REQUIRED_MESSAGE, MIN_LENGTH_MESSAGE, TOUCH_AND_NOT_FOCUS } from '../constants/global';
+import { 
+  REQUIRED,
+  MIN_LENGTH,
+  ARRAY_LENGTH,
+  REQUIRED_MESSAGE,
+  MIN_LENGTH_MESSAGE,
+  TOUCH_AND_NOT_FOCUS
+} from '../constants/global';
+
 //actions.
 import { createEvent } from '../actions/events';
 
