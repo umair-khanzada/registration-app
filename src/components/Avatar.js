@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Avatar = (props) => {
+const Avatar = ({title, image, size}) => {
   return(
-    <a href="javascript:" title={props.title} className="avatar">
+    <a href="javascript:" title={title} className="avatar">
       {
-        props.image ?
-          <img src={props.image} className={props.size} alt="#"/> :
-          <span className={props.size}>{props.title[0]}</span>
+        image ?
+          <img src={image} className={size} alt="#"/> :
+          <span className={size}>{title[0]}</span>
       }
     </a>
   )
