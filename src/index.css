@@ -98,6 +98,12 @@ body {
 .card i{
   margin-right: 5px;
 }
+.card .tag-list{
+  border-right: 2px solid #ccc;
+}
+.card hr{
+  margin: 15px 0;
+}
 
 /*Tags*/
 .react-tagsinput-input{
@@ -148,6 +154,9 @@ body {
 /*Global classes.*/
 .m-r-5{
   margin-right: 5px;
+}
+.m-b-5{
+  margin-bottom: 5px;
 }
 .form-group .form-control{
   height: auto;
