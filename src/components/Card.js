@@ -2,11 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
+// custom components.
+import AvatarGroup from './AvatarGroup';
+
 const {email, _id: {$oid: userId}} = JSON.parse(localStorage.getItem('user'));
 
 //TODO: Enhancement, use same component for event details.
 const Card = (props) => {
-  const {event} = props;
+  const {event, isDetail} = props;
   console.log("event", event)
 
   const isAttend = () => {
@@ -42,6 +45,22 @@ const Card = (props) => {
             <b>{event.venue}</b>
           </h6>
           <h4>{event.name}</h4>
+          {
+            isDetail &&
+              <div>
+                <div className="description">{event.description}</div>
+                <hr/>
+                <div className="row m-b-5">
+                  <div className="col-sm-6 col-md-9 tag-list">
+                    {/*TODO: made tag-list separate component if need to use anywhere else*/}
+                    {event.tags.map((tag, i) => <span key={i}><span className="react-tagsinput-tag">{tag}</span></span>)}
+                  </div>
+                  <div className="col-sm-6 col-md-3">
+                    {/*<AvatarGroup />*/}
+                  </div>
+                </div>
+              </div>
+          }
         </div>
       </div>
     </div>
