@@ -5,7 +5,7 @@ import moment from 'moment';
 // custom components.
 import AvatarGroup from './AvatarGroup';
 
-const {email, _id: {$oid: userId}} = JSON.parse(localStorage.getItem('user'));
+const {email, _id: {$oid: userId} = {$oid: ''}} = JSON.parse(localStorage.getItem('user')) || {};
 
 //TODO: Enhancement, use same component for event details.
 const Card = (props) => {
