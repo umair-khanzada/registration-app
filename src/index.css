@@ -44,8 +44,8 @@ body {
   display: inline-block;
   text-align: center;
   font-weight: bold;
-  color: #72d6ba;
-  background: #fff;
+  color: #fff;
+  background: #72d6ba;
   border-radius: 50%;
 }
 .avatar span.sm{
@@ -70,6 +70,11 @@ body {
 .avatar img.md{
   width: 50px;
   height: 50px;
+}
+
+/*Avatar-group Style*/
+.avatar-group{
+  position: relative;
 }
 
 /*Card Style*/
