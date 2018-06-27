@@ -9,7 +9,7 @@ const {email, _id: {$oid: userId} = {$oid: ''}} = JSON.parse(localStorage.getIte
 
 //TODO: Enhancement, use same component for event details.
 const Card = (props) => {
-  const {event, isDetail} = props;
+  const {event, isDetail, handleClick} = props;
   console.log("event", event)
 
   const isAttend = () => {
@@ -25,7 +25,8 @@ const Card = (props) => {
 
   return (
     <div className={props.className}>
-      <div className="card">
+      {/*TODO: pass style from props.*/}
+      <div className="card" style={{cursor: isDetail ? '' : 'pointer'}} onClick={() => handleClick(event._id.$oid)}>
         <div className="card-header">
           <small className="pull-left">
             <i className="far fa-calendar-alt" />
@@ -69,11 +70,13 @@ const Card = (props) => {
 
 Card.propTypes = {
   event: PropTypes.object.isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
+  handleClick: PropTypes.func
 };
 
 Card.defaultProps = {
-  className: 'col-sm-4 col-md-3'
+  className: 'col-sm-4 col-md-3',
+  handleClick: () => {}
 };
 
 export default Card;
