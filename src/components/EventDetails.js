@@ -8,7 +8,7 @@ import NotFound from './NotFound';
 class EventDetails extends Component {
   render() {
     const { events, match: {params: {id}} } = this.props;
-    const event = events.find(e => e._id.$oid == id);
+    const event = events.find(e => e._id.$oid === id);
     return (
       <div>
         {/*TODO: temporary condition, also check if not exists in redux store get event from DB.*/}

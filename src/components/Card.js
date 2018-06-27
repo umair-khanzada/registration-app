@@ -57,7 +57,7 @@ const Card = (props) => {
                     {event.tags.map((tag, i) => <span key={i}><span className="react-tagsinput-tag">{tag}</span></span>)}
                   </div>
                   <div className="col-sm-6 col-md-3">
-                    {/*<AvatarGroup />*/}
+                    <AvatarGroup members={[{name: 'ovais'}, {name: 'zubair'}, {name: 'zubair'},{name: 'zubair'},{name: 'zubair'},{name: 'zubair'},{name: 'zubair'},{name: 'zubair'},{name: 'zubair'}, {name: 'umair'}, {name: 'sohaib'}, {name: 'sumair'}, {name: 'wasif'}]}/>
                   </div>
                 </div>
               </div>

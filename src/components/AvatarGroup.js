@@ -12,7 +12,7 @@ const AvatarGroup = ({users, members, size}) => {
   console.log("users in  ag", users)
   return (
     <div className="avatar-group">
-      {members.map(({name, image}, i) => <Avatar key={i} title={name} image={image} size={size}/>)}
+      {members.map(({name, image}, i) => <span style={{position: 'absolute', left: (i*18)+'px'}}><Avatar key={i} title={name} image={image} size={size}/></span>)}
     </div>
   )
 };
