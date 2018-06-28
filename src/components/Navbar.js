@@ -33,7 +33,7 @@ class Navbar extends Component {
       .then(() => {
         console.log('User signed out.');
         localStorage.removeItem('user');
-        window.location.href = 'http://localhost:3000';
+        window.location.href = 'https://event-registration-app.herokuapp.com';
       });
   }
 
