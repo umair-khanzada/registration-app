@@ -55,8 +55,17 @@ export const createEvent = (data) => {
         axios.post(`${BASE_URL}events?apiKey=${DB_KEY}`, data)
             .then((response) => {
                 dispatch(addEvent(response.data));
+                sendEmail(data.invites.join(), 'You are invited to our event.', data.name);
                 history.push('/');
             })
             .catch((error) => console.log("error", error));
     }
 };
+
+function sendEmail(to, subject, text){
+  axios.post(`https://event-registration-app.herokuapp.com/email/`, {to, subject, text})
+    .then((response) => {
+      console.log("email response", response)
+    })
+    .catch((error) => console.log("error", error));
+}
