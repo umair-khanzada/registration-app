@@ -38,7 +38,8 @@ class AddEvent extends Component {
       organizers: [],
       trainers: [],
       invites: [],
-      attendees: []
+      attendees: [],
+      externalInvites: []
     }
   }
 
@@ -134,7 +135,18 @@ class AddEvent extends Component {
               show={TOUCH_AND_NOT_FOCUS}
               messages={REQUIRED_MESSAGE}
             />
-          </div>        
+          </div>
+          <div className="form-group">
+            <label>External invite email</label>
+            {/*TODO: verify email address and show error if not a valid email*/}
+            <Control model=".externalInvites" className="form-control" placeholder="External Invites"
+              mapProps={{type: 'string', data: ['someone@gmail.com']}} component={Tags} />
+            {/*<Errors*/}
+              {/*model=".tags"*/}
+              {/*show={TOUCH_AND_NOT_FOCUS}*/}
+              {/*messages={REQUIRED_MESSAGE}*/}
+            {/*/>*/}
+          </div>
           <div>
             <button type="submit" className="btn btn-default pull-right" >Submit</button>
           </div>
