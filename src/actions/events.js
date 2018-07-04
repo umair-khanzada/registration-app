@@ -55,17 +55,33 @@ export const createEvent = (data) => {
         axios.post(`${BASE_URL}events?apiKey=${DB_KEY}`, data)
             .then((response) => {
                 dispatch(addEvent(response.data));
-                sendEmail(data.invites.join(), 'You are invited to our event.', data.name);
+                sendEmail([...data.invites, ...data.externalInvites].join(), 'You are invited to our event.', inviteTemplate(data.name));
                 history.push('/');
             })
             .catch((error) => console.log("error", error));
     }
 };
 
-function sendEmail(to, subject, text){
-  axios.post(`https://event-registration-app.herokuapp.com/email/`, {to, subject, text})
+function sendEmail(to, subject, html){
+  axios.post(`https://event-registration-app.herokuapp.com/email/`, {to, subject, html})
     .then((response) => {
       console.log("email response", response)
     })
     .catch((error) => console.log("error", error));
+}
+
+function inviteTemplate(name){
+    return `
+        <body style="margin: 0; font-family: cursive;">
+            <header style="padding: 10px; background: #72d6ba; color: #fff; text-align: center;">
+                <h3>You are invited to our event.</h3>
+            </header>
+            <section style="text-align: center;">
+                <h4>${name}</h4>
+            </section>
+            <footer style="    padding: 5px 10px; background: #72d6ba; text-align: center; color: #fff; margin-top: 50px;">
+                <p>To attend this event you need to Login OR Signup <a href="https://event-registration-app.herokuapp.com/" target="_blank">here</a></p>
+            </footer>
+        </body>
+    `
 }
