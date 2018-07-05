@@ -72,18 +72,22 @@ function sendEmail(to, subject, html){
     .catch((error) => console.log("error", error));
 }
 
-function inviteTemplate({name, startDate, description}){
+function inviteTemplate({name, startDate, venue, description}){
     return `
         <body style="margin: 0; font-family: cursive;">
-            <header style="padding: 5px 10px; background: #0067B8; color: #fff; text-align: center; font-size: 20px; margin-bottom: 50px;">
+            <header style="padding: 5px 10px; background: #0067B8; color: #fff; text-align: center; font-size: 20px;">
                 <h2 style="margin: 0">You are invited to our event </h2>
-                <h1 style="margin: 0; color: red">${name}</h1>
+                <h1 style="margin: 0; color: #e74c3c">${name}</h1>
                 <h2 style="margin: 0">Which will be on ${moment(startDate).format('dddd, Do MMM YYYY')}</h2>
+                <h2>
+                    <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/map-marker-512.png" alt="#" style="width: 70px; vertical-align: middle;">
+                    ${venue}
+                </h2>
             </header>
-            <section style="text-align: center; width: 50%; margin: 0 auto;">
-                <p style="font-size: 20px">${description}</p>
+            <section style="margin: 0 auto; padding: 50px 0; background: #91baf9;">
+                <p style="text-align: center; width: 50%; margin: 0 auto; font-size: 20px">${description}</p>
             </section>
-            <footer style="padding: 5px 10px; background: #0067B8; text-align: center; color: #fff; margin-top: 50px;">
+            <footer style="padding: 5px 10px; background: #0067B8; text-align: center; color: #fff;">
                 <h2>To attend this event you need to Login OR Sign Up <a href="https://event-registration-app.herokuapp.com/" target="_blank" style="color: yellow;">here</a></h2>
             </footer>
         </body>
