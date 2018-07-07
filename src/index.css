@@ -100,6 +100,11 @@ body {
 .card-info{
   padding: 5px 10px;
 }
+.card-info .venue{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 .card i{
   margin-right: 5px;
 }

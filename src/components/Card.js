@@ -41,7 +41,7 @@ const Card = (props) => {
         </div>
         <img src="http://cs.pes.edu/wp-content/uploads/2016/06/default-2.jpg" alt="Avatar" style={{width:'100%'}} />
         <div className="card-info">
-          <h6>
+          <h6 className="venue">
             <i className="fas fa-map-marker" />
             <b>{event.venue}</b>
           </h6>
