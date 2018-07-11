@@ -72,13 +72,14 @@ function sendEmail(to, subject, html){
     .catch((error) => console.log("error", error));
 }
 
-function inviteTemplate({name, startDate, venue, description}){
+function inviteTemplate({name, startDate, venue, description, startTime, endTime}){
     return `
         <body style="margin: 0; font-family: cursive;">
             <header style="padding: 5px 10px; background: #0067B8; color: #fff; text-align: center; font-size: 20px;">
                 <h2 style="margin: 0">You are invited to our event </h2>
                 <h1 style="margin: 0; color: #e74c3c">${name}</h1>
                 <h2 style="margin: 0">Which will be on ${moment(startDate).format('dddd, Do MMM YYYY')}</h2>
+                <h2 style="margin: 0">${startTime} - ${endTime}</h2>
                 <h2>
                     <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/map-marker-512.png" alt="#" style="width: 70px; vertical-align: middle;">
                     ${venue}
