@@ -24,7 +24,7 @@ import { createEvent } from '../actions/events';
 const OptionList = ({data, label, value, nested}) => {
   return data.map((obj, i) => (
     <option key={i} value={nested ? obj[value].$oid : obj[value]}>
-      {obj[label]}
+      {obj[label[0]]} {label[1] && ` (${obj[label[1]]})`}
     </option>
   ))
 };
@@ -138,7 +138,7 @@ class AddEvent extends Component {
             <label>Organizers</label>
             {/*TODO: use Tags for better user experience*/}
             <Control.select model=".organizers" className="form-control" validators={{ REQUIRED: ARRAY_LENGTH }} multiple>
-              <OptionList data={users} value="_id" label="name" nested/>
+              <OptionList data={users} value="_id" label={['name']} nested/>
             </Control.select>
             <Errors
               model=".organizers"
@@ -150,7 +150,7 @@ class AddEvent extends Component {
             <label>Trainers</label>
             {/*TODO: use Tags for better user experience*/} 
             <Control.select model=".trainers" className="form-control" validators={{ REQUIRED: ARRAY_LENGTH }} multiple>
-              <OptionList data={users} value="_id" label="name" nested/>
+              <OptionList data={users} value="_id" label={['name']} nested/>
             </Control.select>
             <Errors
               model=".trainers"
@@ -162,7 +162,7 @@ class AddEvent extends Component {
             <label>Invites</label>
             {/*TODO: use Tags for better user experience*/} 
             <Control.select model=".invites" className="form-control" validators={{ REQUIRED: ARRAY_LENGTH }} multiple>
-              <OptionList data={users} value="email" label="email"/>
+              <OptionList data={users} value="email" label={['name', 'email']}/>
             </Control.select>
             <Errors
               model=".invites"
