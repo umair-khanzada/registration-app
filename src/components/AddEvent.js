@@ -55,15 +55,16 @@ class AddEvent extends Component {
     this.setState({[name]: {time: `${hour}:${minute}`, meridiem, focused: true}})
   }
 
+  onFocusChange({status, name}){
+    this.setState({[name]: {...this.state[name], focused: status}})
+  }
+
   createEvent(data) {
-    console.log("data", data);
     /* TODO: convert date into array of date and time object, eg: [{date: '27/07/2018', time: '10:10 am'}]*/
     const {start, end} = this.state,
-      time = {
-        startTime: `${start.time} ${start.meridiem}`,
-        endTime: `${end.time} ${end.meridiem}`
-      },
+      time = {startTime: `${start.time} ${start.meridiem}`, endTime: `${end.time} ${end.meridiem}`},
       payload = Object.assign({}, data, time);
+
     console.log("payload", payload)
     this.props.dispatch(createEvent(payload));
   }
@@ -124,13 +125,15 @@ class AddEvent extends Component {
           </div>
           <div className="form-group inline-element m-r-10">
             <label>Start time</label>
-            <TimePicker timeMode="12" key="start"
+            <TimePicker timeMode="12" key="start" onFocusChange={(status) => {this.onFocusChange({status, name: 'start'})}}
               time={startTime} focused={startFocused} meridiem={startMeridiem}
               onTimeChange={(time) => this.onTimeChange({...time, name: 'start'})} />
+            {/*<Control model=".startTime" className="form-control"
+              mapProps={{timeMode: '12', onFocusChange: (status) => {this.onFocusChange({status, name: 'start'})}, time: startTime, focused: startFocused, meridiem: startMeridiem, onTimeChange: (time) => this.onTimeChange({...time, name: 'start'})}} component={TimePicker} />*/}
           </div>
           <div className="form-group inline-element m-l-10">
             <label>End time</label>
-            <TimePicker timeMode="12" key="end"
+            <TimePicker timeMode="12" key="end" onFocusChange={(status) => {this.onFocusChange({status, name: 'end'})}}
               time={endTime} focused={endFocused} meridiem={endMeridiem}
               onTimeChange={(time) => this.onTimeChange({...time, name: 'end'})} />
           </div>
