@@ -3,7 +3,23 @@ body {
   padding: 0;
   font-family: 'Exo 2', sans-serif;
 }
+.inline-element{
+    display: inline-block;
+    width: calc(50% - 10px);
+}
 
+/*Time picker style*/
+.picker_container{
+  margin: 0 auto;
+}
+.time_picker_modal_header,
+.time_picker_modal_footer,
+.timezone_picker_modal_header,
+.picker_pointer .pointer_drag,
+.picker_pointer,
+.picker_center{
+  background-color: #72d6ba;
+}
 
 /*Login Style*/
 .login-container{
@@ -164,6 +180,12 @@ body {
 /*Global classes.*/
 .m-r-5{
   margin-right: 5px;
+}
+.m-r-10{
+  margin-right: 10px;
+}
+.m-l-10{
+  margin-left: 10px;
 }
 .m-b-5{
   margin-bottom: 5px;
