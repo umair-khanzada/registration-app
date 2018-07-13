@@ -6,13 +6,20 @@ import { connect } from 'react-redux';
 import Avatar from './Avatar';
 
 //constants.
-import { GET_DETAIL } from '../constants/global';
+//import { GET_DETAIL } from '../constants/global';
 
 const AvatarGroup = ({users, members, size}) => {
   const avatarUsers = users.filter(user => members.includes(user._id.$oid));
   return (
     <div className="avatar-group">
-      {avatarUsers.map(({name, image}, i) => <span key={i} style={{position: 'absolute', left: (i*18)+'px'}}><Avatar title={name} image={image} size={size}/></span>)}
+      {
+        avatarUsers.map(({name, image}, i) => (
+          <span key={i} style={{position: 'absolute', left: (i*18)+'px'}}>
+            <Avatar title={name} image={image} size={size}/>
+          </span>
+          )
+        )
+      }
     </div>
   )
 };
