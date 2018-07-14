@@ -18,12 +18,14 @@ import './index.css';
 import rootReducer from './reducers/index';
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
+const authentication = () => localStorage.getItem('user') ? <App /> : <Redirect to="/login" />;
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Switch>
         <Route path="/login" component={Login} />
-        <Route path="/" render={() => localStorage.getItem('user') ? <App /> : <Redirect to="/login" />} />
+        <Route path="/" render={authentication} />
       </Switch>
     </Router>
   </Provider>,
