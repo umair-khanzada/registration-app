@@ -73,6 +73,8 @@ class AddEvent extends Component {
     const {users} = this.props,
       {time: startTime, meridiem: startMeridiem, focused: startFocused } = this.state.start,
       {time: endTime, meridiem: endMeridiem, focused: endFocused } = this.state.end;
+
+    // TODO: add status: enum ['open', 'closed', 'pending'], and type: enum ['public', 'private'].
     return (
       <div className="col-sm-offset-3 col-sm-6">
         <LocalForm initialState={this.initialEvent} onSubmit={(values) => this.createEvent(values)}>
