@@ -10,7 +10,7 @@ import Avatar from './Avatar';
 
 const AvatarGroup = ({users, members, size, max}) => {
   let avatarUsers = users.filter(user => members.includes(user._id.$oid));
-  if(avatarUsers.length > max) avatarUsers = [...avatarUsers.slice(0, max), {name: `${avatarUsers.length - max}+`}];
+  if(avatarUsers.length > max) avatarUsers = [...avatarUsers.slice(0, max), {name: `+${avatarUsers.length - max} More`}];
   return (
     <div className="avatar-group">
       {
