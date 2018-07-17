@@ -45,7 +45,7 @@ const Card = (props) => {
             <i className="fas fa-map-marker" />
             <b>{event.venue}</b>
           </h6>
-          <h4>{event.name}</h4>
+          <h4 className="event-name">{event.name}</h4>
           {
             isDetail &&
               <div>

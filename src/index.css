@@ -116,7 +116,10 @@ body {
 .card-info{
   padding: 5px 10px;
 }
-.card-info .venue{
+.card-info .event-name{
+  padding-bottom: 2px;
+}
+.card-info .venue, .card-info .event-name{
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
