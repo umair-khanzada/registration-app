@@ -8,8 +8,9 @@ import Avatar from './Avatar';
 //constants.
 //import { GET_DETAIL } from '../constants/global';
 
-const AvatarGroup = ({users, members, size}) => {
-  const avatarUsers = users.filter(user => members.includes(user._id.$oid));
+const AvatarGroup = ({users, members, size, max}) => {
+  let avatarUsers = users.filter(user => members.includes(user._id.$oid));
+  if(avatarUsers.length > max) avatarUsers = [...avatarUsers.slice(0, max), {name: `${avatarUsers.length - max}+`}];
   return (
     <div className="avatar-group">
       {
@@ -26,12 +27,14 @@ const AvatarGroup = ({users, members, size}) => {
 
 AvatarGroup.propTypes = {
   members: PropTypes.arrayOf(PropTypes.string).isRequired,
-  size: PropTypes.oneOf(['sm', 'md'])
+  size: PropTypes.oneOf(['sm', 'md']),
+  max: PropTypes.number
 };
 
 
 AvatarGroup.defaultProps = {
-  size: 'sm'
+  size: 'sm',
+  max: 9
 };
 
 export default connect((state) => {
