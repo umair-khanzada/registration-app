@@ -65,9 +65,9 @@ body {
   border-radius: 50%;
 }
 .avatar span.sm{
-  width: 30px;
+  width: 25px;
   padding: 5px 0;
-  font-size: 15px;
+  font-size: 11px;
 }
 
 .avatar span.md{

@@ -7,7 +7,7 @@ const Avatar = ({title, image, size}) => {
       {
         image ?
           <img src={image} className={size} alt="#"/> :
-          <span className={size}>{title[0]}</span>
+          <span className={size}>{title.substr(0, 2)}</span>
       }
     </a>
   )
