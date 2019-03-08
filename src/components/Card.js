@@ -10,7 +10,7 @@ const {email, _id: {$oid: userId} = {$oid: ''}} = JSON.parse(localStorage.getIte
 //TODO: Enhancement, use same component for event details.
 const Card = (props) => {
   const {event, isDetail, handleClick} = props;
-  console.log("event", event)
+  console.log("event", event);
 
   const isAttend = () => {
     if(
@@ -21,7 +21,7 @@ const Card = (props) => {
       } else {
         return 'r';
       }
-  }
+  };
 
   return (
     <div className={props.className}>

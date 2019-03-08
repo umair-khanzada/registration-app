@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="margin: 0; font-family: cursive;">
+<header style="padding: 5px 10px; background: #0067B8; color: #fff; text-align: center; font-size: 20px;">
+    <h2 style="margin: 0">You are invited to our event </h2>
+    <h1 style="margin: 0; color: #e74c3c">${name}</h1>
+    <h2 style="margin: 0">Which will be on ${moment(startDate).format('dddd, Do MMM YYYY')}</h2>
+    <h2>
+        <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/map-marker-512.png" alt="#" style="width: 70px; vertical-align: middle;">
+        ${venue}
+    </h2>
+</header>
+<section style="margin: 0 auto; padding: 50px 0; background: #91baf9;">
+    <p style="text-align: center; width: 50%; margin: 0 auto; font-size: 20px">${description}</p>
+</section>
+<footer style="padding: 5px 10px; background: #0067B8; text-align: center; color: #fff;">
+    <h2>To attend this event you need to Login OR Sign Up <a href="https://event-registration-app.herokuapp.com/" target="_blank" style="color: yellow;">here</a></h2>
+</footer>
+</body>
+</html>

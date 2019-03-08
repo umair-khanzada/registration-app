@@ -23,7 +23,7 @@ class Navbar extends Component {
       gapi.load('auth2', function() {
         gapi.auth2.init();
       });
-    }, 5000);
+    }, 8000);
   }
 
   signOut(){
